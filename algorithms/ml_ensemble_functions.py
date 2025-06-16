@@ -52,7 +52,7 @@ def Adaboost_with_nEstimators_rate_fixed(data, params, base_estimator=DecisionTr
     block = {"params": [], "Y_predictions": [],
              "Y_actuals": [], "runtime": []}
     classifier = AdaBoostClassifier(
-        base_estimator=base_estimator, algorithm="SAMME.R", random_state=None)
+        estimator=base_estimator, algorithm="SAMME.R", random_state=None)
     classifier = classifier.set_params(**params)
     block["params"] = classifier.get_params(deep=True)
     classifier.fit(data['X_train'], data['Y_train'])
@@ -113,7 +113,7 @@ def GradientBoosting_with_nEstimators_rate_fixed(data, params):
     gt0 = time()
     block = {"params": [], "Y_predictions": [], "Y_actuals": [], "runtime": []}
     classifier = GradientBoostingClassifier(
-        loss='deviance', subsample=0.5, random_state=None)
+        loss="log_loss", subsample=0.5, random_state=None)
     classifier = classifier.set_params(**params)
     block["params"] = classifier.get_params(deep=True)
     classifier.fit(data['X_train'], data['Y_train'])
@@ -174,7 +174,7 @@ def Bagging_classifier_with_samples_features_fixed(data, params, base_estimator=
     block = {"params": [], "Y_predictions": [],
              "Y_actuals": [], "runtime": []}
     classifier = BaggingClassifier(
-        base_estimator=base_estimator, n_jobs=-1)
+        estimator=base_estimator, n_jobs=-1)
     classifier = classifier.set_params(**params)
     block["params"] = classifier.get_params(deep=True)
     classifier.fit(data['X_train'], data['Y_train'])

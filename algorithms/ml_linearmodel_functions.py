@@ -11,6 +11,7 @@ def binLR_with_tol_iter_fixed(data, params):
              "Y_actuals": [], "runtime": []}
     classifier = LogisticRegression(
         penalty='l2', dual=False, n_jobs=-1, solver='lbfgs', class_weight='balanced')
+    params["max_iter"] = int(params["max_iter"])
     classifier = classifier.set_params(**params)
     block["params"] = classifier.get_params(deep=True)
     classifier.fit(data['X_train'], data['Y_train'])

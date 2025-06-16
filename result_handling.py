@@ -32,22 +32,18 @@ def extract_optimized_params(cv_results):
 def fixed_handler(result, parsed_opts):
     to_serialize = {'estimator': result}
     print(repr(to_serialize['estimator']['classifier']))
+    
     to_serialize['accuracy_score'] = accuracy_score(result['Y_actuals'], result['Y_predictions'])
-    to_serialize['balanced_accuracy'] = balanced_accuracy_score(
-        result['Y_actuals'], result['Y_predictions'])
-    to_serialize['confusion_matrix'] = confusion_matrix(
-        result['Y_actuals'], result['Y_predictions'])
-    to_serialize['f1_score'] = f1_score(
-        result['Y_actuals'], result['Y_predictions'])
-    to_serialize['precision_score'] = precision_score(
-        result['Y_actuals'], result['Y_predictions'])
-    to_serialize['recall_score'] = recall_score(
-        result['Y_actuals'], result['Y_predictions'])
-    to_serialize['roc_auc_score'] = roc_auc_score(
-        result['Y_actuals'], result['Y_predictions'])
+    to_serialize['balanced_accuracy'] = balanced_accuracy_score(result['Y_actuals'], result['Y_predictions'])
+    to_serialize['confusion_matrix'] = confusion_matrix(result['Y_actuals'], result['Y_predictions'])
+    to_serialize['f1_score'] = f1_score(result['Y_actuals'], result['Y_predictions'])
+    to_serialize['precision_score'] = precision_score(result['Y_actuals'], result['Y_predictions'])
+    to_serialize['recall_score'] = recall_score(result['Y_actuals'], result['Y_predictions'])
+    to_serialize['roc_auc_score'] = roc_auc_score(result['Y_actuals'], result['Y_predictions'])
     to_serialize['train_percent'] = parsed_opts.trainpercent
     to_serialize['reduced_by'] = parsed_opts.reduceby
-    # pp.pprint(result)
+
+    # Pretty print
     print('accuracy_score : ', to_serialize['accuracy_score'])
     print('balanced_accuracy : ', to_serialize['balanced_accuracy'])
     print('confusion_matrix : \n', to_serialize['confusion_matrix'])
@@ -56,30 +52,44 @@ def fixed_handler(result, parsed_opts):
     print('recall_score : ', to_serialize['recall_score'])
     print('roc_auc_score : ', to_serialize['roc_auc_score'])
 
+    # Save model if required
     if parsed_opts.export:
-        filename = parsed_opts.resultdir+'single/models/'+parsed_opts.A+'/' + \
-            str(parsed_opts.D)+'_'+parsed_opts.A+'_'+parsed_opts.S+'_' + \
-            str(parsed_opts.trainpercent)+'_'+str(parsed_opts.reduceby)+'.pkl'
+        filename = parsed_opts.resultdir + 'single/models/' + parsed_opts.A + '/' + \
+                   f"{parsed_opts.D}_{parsed_opts.A}_{parsed_opts.S}_{parsed_opts.trainpercent}_{parsed_opts.reduceby}.pkl"
         try:
             joblib.dump(result["classifier"], filename, compress=3)
         except KeyError:
             print("Couldn't find the classifier model as a key in the result dict")
 
+    # Save JSON
     if parsed_opts.disk:
-        with open(parsed_opts.resultdir+'single/'+parsed_opts.A+'/'+str(parsed_opts.D)+'_'+parsed_opts.A+'_'+parsed_opts.S+'_'+str(parsed_opts.trainpercent)+'_'+str(parsed_opts.reduceby)+'.json', 'w') as outfile:
-            try:
-                to_serialize['estimator']['classifier'] = repr(
-                    to_serialize['estimator']['classifier'])
+        # Clean up and serialize safely
+        try:
+            to_serialize['estimator']['classifier'] = repr(to_serialize['estimator']['classifier'])
+            if 'base_estimator' in to_serialize['estimator']['params']:
                 to_serialize['estimator']['params']['base_estimator'] = repr(
-                    to_serialize['estimator']['params']
-                    ['base_estimator']).split('(')[0]
-            except KeyError:
-                pass
-            del to_serialize['estimator']['Y_predictions']
-            del to_serialize['estimator']['Y_actuals']
-            to_serialize['confusion_matrix'] = to_serialize['confusion_matrix'].tolist()
+                    to_serialize['estimator']['params']['base_estimator']).split('(')[0]
+            if 'estimator' in to_serialize['estimator']['params']:
+                to_serialize['estimator']['params']['estimator'] = repr(
+                    to_serialize['estimator']['params']['estimator']).split('(')[0]
+        except KeyError:
+            pass
+
+        # Remove numpy arrays and model outputs
+        to_serialize['confusion_matrix'] = to_serialize['confusion_matrix'].tolist()
+        to_serialize['estimator'].pop('Y_predictions', None)
+        to_serialize['estimator'].pop('Y_actuals', None)
+
+        # Ensure output folder exists
+        output_dir = os.path.join(parsed_opts.resultdir, 'single', parsed_opts.A)
+        os.makedirs(output_dir, exist_ok=True)
+
+        # Write to JSON file
+        json_path = os.path.join(output_dir, f"{parsed_opts.D}_{parsed_opts.A}_{parsed_opts.S}_{parsed_opts.trainpercent}_{parsed_opts.reduceby}.json")
+        with open(json_path, 'w') as outfile:
             pp.pprint(to_serialize)
             json.dump(to_serialize, outfile)
+
 
 
 def search_handler(result, runtime, parsed_opts):

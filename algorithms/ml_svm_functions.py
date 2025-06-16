@@ -10,6 +10,7 @@ def linSVC_with_tol_iter_fixed(data, params):
     block = {"params": [], "Y_predictions": [],
              "Y_actuals": [], "runtime": []}
     classifier = LinearSVC(penalty='l2', dual=False, class_weight='balanced')
+    params["max_iter"] = int(params["max_iter"])
     classifier = classifier.set_params(**params)
     block["params"] = classifier.get_params(deep=True)
     classifier.fit(data['X_train'], data['Y_train'])

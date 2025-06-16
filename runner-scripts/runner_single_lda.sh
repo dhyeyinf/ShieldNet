@@ -1,0 +1,19 @@
+#! /usr/bin/env bash
+python3 -u ../ml.py --datadir ../data/CSV/ --resultdir ../results/ -D 0 -A lda -S Z
+python3 -u ../ml.py --datadir ../data/CSV/ --resultdir ../results/ -D 0 -A lda -S MinMax
+python3 -u ../ml.py --datadir ../data/CSV/ --resultdir ../results/ -D 0 -A lda -S No
+python3 -u ../ml.py --datadir ../data/CSV/ --resultdir ../results/ -D 1 -A lda -S Z
+python3 -u ../ml.py --datadir ../data/CSV/ --resultdir ../results/ -D 1 -A lda -S MinMax
+python3 -u ../ml.py --datadir ../data/CSV/ --resultdir ../results/ -D 1 -A lda -S No
+python3 -u ../ml.py --datadir ../data/CSV/ --resultdir ../results/ -D 2 -A lda -S Z
+python3 -u ../ml.py --datadir ../data/CSV/ --resultdir ../results/ -D 2 -A lda -S MinMax
+python3 -u ../ml.py --datadir ../data/CSV/ --resultdir ../results/ -D 2 -A lda -S No
+python3 -u ../ml.py --datadir ../data/CSV/ --resultdir ../results/ -D 3 -A lda -S Z
+python3 -u ../ml.py --datadir ../data/CSV/ --resultdir ../results/ -D 3 -A lda -S MinMax
+python3 -u ../ml.py --datadir ../data/CSV/ --resultdir ../results/ -D 3 -A lda -S No
+python3 -u ../ml.py --datadir ../data/CSV/ --resultdir ../results/ -D 4 -A lda -S Z
+python3 -u ../ml.py --datadir ../data/CSV/ --resultdir ../results/ -D 4 -A lda -S MinMax
+python3 -u ../ml.py --datadir ../data/CSV/ --resultdir ../results/ -D 4 -A lda -S No
+python3 -u ../ml.py --datadir ../data/CSV/ --resultdir ../results/ -D 5 -A lda -S Z
+python3 -u ../ml.py --datadir ../data/CSV/ --resultdir ../results/ -D 5 -A lda -S MinMax
+python3 -u ../ml.py --datadir ../data/CSV/ --resultdir ../results/ -D 5 -A lda -S No

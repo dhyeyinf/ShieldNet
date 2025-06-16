@@ -1,0 +1,19 @@
+#! /usr/bin/env bash
+python3 -u ../ml.py --datadir ../data/CSV/ --resultdir ../results/ -D 0 -A bag -S Z
+python3 -u ../ml.py --datadir ../data/CSV/ --resultdir ../results/ -D 0 -A bag -S MinMax
+python3 -u ../ml.py --datadir ../data/CSV/ --resultdir ../results/ -D 0 -A bag -S No
+python3 -u ../ml.py --datadir ../data/CSV/ --resultdir ../results/ -D 1 -A bag -S Z
+python3 -u ../ml.py --datadir ../data/CSV/ --resultdir ../results/ -D 1 -A bag -S MinMax
+python3 -u ../ml.py --datadir ../data/CSV/ --resultdir ../results/ -D 1 -A bag -S No
+python3 -u ../ml.py --datadir ../data/CSV/ --resultdir ../results/ -D 2 -A bag -S Z
+python3 -u ../ml.py --datadir ../data/CSV/ --resultdir ../results/ -D 2 -A bag -S MinMax
+python3 -u ../ml.py --datadir ../data/CSV/ --resultdir ../results/ -D 2 -A bag -S No
+python3 -u ../ml.py --datadir ../data/CSV/ --resultdir ../results/ -D 3 -A bag -S Z
+python3 -u ../ml.py --datadir ../data/CSV/ --resultdir ../results/ -D 3 -A bag -S MinMax
+python3 -u ../ml.py --datadir ../data/CSV/ --resultdir ../results/ -D 3 -A bag -S No
+python3 -u ../ml.py --datadir ../data/CSV/ --resultdir ../results/ -D 4 -A bag -S Z
+python3 -u ../ml.py --datadir ../data/CSV/ --resultdir ../results/ -D 4 -A bag -S MinMax
+python3 -u ../ml.py --datadir ../data/CSV/ --resultdir ../results/ -D 4 -A bag -S No
+python3 -u ../ml.py --datadir ../data/CSV/ --resultdir ../results/ -D 5 -A bag -S Z
+python3 -u ../ml.py --datadir ../data/CSV/ --resultdir ../results/ -D 5 -A bag -S MinMax
+python3 -u ../ml.py --datadir ../data/CSV/ --resultdir ../results/ -D 5 -A bag -S No

@@ -37,8 +37,8 @@ Technologies Used
 ## Setup Instruction
 1\. Clone the Repository
 ```bash
-git clone https://github.com/dhyeyinf/SecuNetML.git
-cd SecuNetML
+git clone https://github.com/dhyeyinf/ShieldNet.git
+cd ShieldNet
 ```
 2\. Install Dependencies
 Make sure Python is installed (≥3.7), then:

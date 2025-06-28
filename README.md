@@ -37,8 +37,8 @@ Technologies Used
 ## Setup Instruction
 1\. Clone the Repository
 ```bash
-git clone https://github.com/dhyeyinf/ISCX-OneClassSVM-Anomaly-Detection.git
-cd ISCX-OneClassSVM-Anomaly-Detection
+git clone https://github.com/dhyeyinf/SecuNetML.git
+cd SecuNetML
 ```
 2\. Install Dependencies
 Make sure Python is installed (≥3.7), then:

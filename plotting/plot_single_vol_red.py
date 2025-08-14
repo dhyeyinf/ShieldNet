@@ -203,7 +203,5 @@ def produce_plot(algo, day, scaling, reduc):
                     borderaxespad=0., fontsize='large', title=algorithm, title_fontsize='x-large')
 
    
-
-
 produce_plot(algorithm, 0, 'Z', 0)
 plt.show()

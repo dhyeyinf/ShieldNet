@@ -6,6 +6,3 @@
 ./plot_cv.py -D ../results/cv/knn &
 ./plot_cv.py -D ../results/cv/linsvc &
 ./plot_cv.py -D ../results/cv/rforest &
-
-
-

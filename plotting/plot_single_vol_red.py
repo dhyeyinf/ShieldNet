@@ -202,9 +202,7 @@ def produce_plot(algo, day, scaling, reduc):
         axes.legend(handles, labels, bbox_to_anchor=(0.95, 0.15), loc=7,
                     borderaxespad=0., fontsize='large', title=algorithm, title_fontsize='x-large')
 
-    # if parsed_opts.F:
-    #     plt.savefig(fname=parsed_opts.F, dpi='figure', quality=95,
-    #                 orientation='portrait', format='svg')
+   
 
 
 produce_plot(algorithm, 0, 'Z', 0)

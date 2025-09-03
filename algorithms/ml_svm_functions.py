@@ -4,7 +4,6 @@ import numpy as np
 from sklearn.svm import LinearSVC, SVC, NuSVC
 from sklearn.model_selection import RepeatedStratifiedKFold, cross_validate, GridSearchCV
 
-
 def linSVC_with_tol_iter_fixed(data, params):
     gt0 = time()
     block = {"params": [], "Y_predictions": [],

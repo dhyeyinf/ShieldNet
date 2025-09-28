@@ -11,7 +11,6 @@ pp = pprint.PrettyPrinter(indent=4)
 # it's a voting mechanism, choosing the overall highest rated params
 # by looking at its rank in 5 metrics
 
-
 def extract_optimized_params(cv_results):
     one_locations = []
     possible_params = {}

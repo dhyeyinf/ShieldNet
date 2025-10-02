@@ -54,4 +54,3 @@ print("#! /usr/bin/env bash")
 for b in generate_required_list(algorithm).difference(found_in_dir):
     parts = b.split('_')
     print("python3 -u ../ml.py -D "+parts[0]+" -A "+ parts[1]+" -S "+parts[2]+" --trainpercent "+parts[3]+" --reduceby "+parts[4].split('.')[0]+" --datadir ../data/CSV/ --resultdir ../results/")
-    

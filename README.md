@@ -1,4 +1,4 @@
-# 🚨 ISCXIDS2012 - Network Intrusion Detection using Machine Learning
+# ISCXIDS2012 - Network Intrusion Detection using Machine Learning
 
 A comprehensive project that benchmarks multiple ML models to detect network intrusions using the ISCXIDS2012 dataset. The system processes day-wise traffic data and evaluates models like Random Forest, SVM, ExtraTrees, Gradient Boost, and more. The pipeline is fully automated and generates performance metrics for all models on all days.
 

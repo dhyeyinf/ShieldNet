@@ -4,7 +4,7 @@ A comprehensive project that benchmarks multiple ML models to detect network int
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```bash
 ISCXIDS2012-MASTER/
